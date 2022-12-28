@@ -1,7 +1,7 @@
 import type {GetStaticProps, NextPage} from 'next'
 import Link from "next/link";
 import Blogs from "../components/blogs/Blogs";
-import Book from "../components/portfolio/book";
+import Book from "../components/books/book";
 import BaseLayout from "../components/layout/BaseLayout";
 import {getBlogs, getDir} from "../lib/md";
 import {Blog} from '../interfaces/blog'

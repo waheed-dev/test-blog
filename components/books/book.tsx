@@ -2,10 +2,10 @@ import Image from "next/image";
 import Link from "next/link";
 import {portfolios} from "./portfolioData";
 import {FunctionComponent} from "react";
-import {Book} from "../../interfaces/book";
+import {Boook} from "../../interfaces/book";
 
     type Props = {
-        book : Book
+        book : Boook
     }
 const Book : FunctionComponent<Props> = ({book}) => {
     return (
