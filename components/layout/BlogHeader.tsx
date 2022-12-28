@@ -44,7 +44,7 @@ const BlogHeader : FunctionComponent<props> = ({blog}) => {
                 </div>
             </div>
             <h2 className="blog-detail-header-subtitle mb-2 text-xl text-gray-600">{blog.description}</h2>
-            <div className="md:h-96 h-72 bg-black mx-auto w-full relative">
+            <div className="md:h-96 h-72 mt-4 bg-black mx-auto w-full relative">
                 <Image
                     priority
                     layout="fill"

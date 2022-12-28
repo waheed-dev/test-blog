@@ -14,9 +14,9 @@ const BlogDetail: NextPage<props> = ({blog}) => {
     return (
         <>
             <PageLayout pageTitle = {blog.title}>
-                <div className=" w-80  sm:w-3/4 md:w-2/3 lg:w-2/3 m-auto">
+                <div className=" w-80 sm:w-3/4 md:w-3/4 lg:w-2/3 m-auto">
                     <BlogHeader blog={blog}  />
-                    <article className="prose  prose-lg md:prose-xl lg:prose-xl  markdown-image-40">
+                    <article className="prose  prose-lg md:prose-lg lg:prose-xl  markdown-image-40">
                         <div dangerouslySetInnerHTML={{__html : blog.content}}></div>
                     </article>
                 </div>
