@@ -19,7 +19,7 @@ const PageLayout : FunctionComponent<PropsWithChildren<props>> = ({children,page
                     <div className="relative z-10 bg-white pb-8  lg:w-full lg:max-w-2xl">
                         <NavBar/>
                 </div>
-                <div className="py-16  sm:px-6 lg:max-w-7xl lg:px-8">
+                <div className="py-4 md:py-6 lg:py-8  sm:px-6 lg:max-w-7xl lg:px-8">
                     {children}
                 </div>
             </div>

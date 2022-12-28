@@ -10,7 +10,9 @@ const BlogHeader : FunctionComponent<props> = ({blog}) => {
 
     return (
         <div className="blog-detail-header">
-            <div className="flex flex-row justify-between mb-2">
+
+            <h1 className="font-bold text-4xl mb-1">{blog.title}</h1>
+            <div className="flex flex-row justify-between mb-6 mt-4">
                 <div className="flex items-center">
                     <div className="flex-shrink-0">
                         <a href="#">
@@ -38,17 +40,17 @@ const BlogHeader : FunctionComponent<props> = ({blog}) => {
                     </div>
                 </div>
                 <div className="flex self-end">
-                    {/* Social Links Here */}
+                   <p>sad</p>
                 </div>
             </div>
-            <h1 className="font-bold text-4xl mb-1">{blog.title}</h1>
             <h2 className="blog-detail-header-subtitle mb-2 text-xl text-gray-600">{blog.description}</h2>
-            <div className="h-96 bg-black mx-auto w-full relative">
+            <div className="md:h-96 h-72 bg-black mx-auto w-full relative">
                 <Image
                     priority
                     layout="fill"
                     objectFit="cover"
-                    src={blog.coverImage} alt=""/>
+                    src={blog.coverImage} alt=""
+                />
             </div>
         </div>
     )
