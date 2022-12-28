@@ -1,13 +1,13 @@
 import Image from "next/image";
 import Link from "next/link";
 import {portfolios} from "./portfolioData";
-import {Book} from "../../interfaces/book";
 import {FunctionComponent} from "react";
+import {Book} from "../../interfaces/book";
 
     type Props = {
         book : Book
     }
-const Portfolio : FunctionComponent<Props> = ({book}) => {
+const Book : FunctionComponent<Props> = ({book}) => {
     return (
         <div className="mt-6 grid grid-cols-1 gap-y-10 gap-x-6 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-8">
             {portfolios.map((portfolio) => (
@@ -35,4 +35,4 @@ const Portfolio : FunctionComponent<Props> = ({book}) => {
     )
 }
 
-export default Portfolio
+export default Book

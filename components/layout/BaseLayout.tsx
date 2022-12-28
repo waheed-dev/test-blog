@@ -4,7 +4,7 @@ import Header from "../common/Header";
 import Image from "next/image";
 import Link from "next/link";
 import Blogs from "../blogs/Blogs";
-import Portfolio from "../portfolio/Portfolio";
+import Book from "../portfolio/book";
 import Footer from "../common/Footer";
 
 const BaseLayout = ({children} : any) => {

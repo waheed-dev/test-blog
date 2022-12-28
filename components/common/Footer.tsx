@@ -2,7 +2,7 @@ import Link from "next/link";
 
 const navigation = [
     { name: 'Blogs', href: '/blogs' },
-    { name: 'Portfolio', href: '/portfolios' },
+    { name: 'Book', href: '/portfolios' },
 ]
 
 const socialLinks = [

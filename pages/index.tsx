@@ -1,7 +1,7 @@
 import type {GetStaticProps, NextPage} from 'next'
 import Link from "next/link";
 import Blogs from "../components/blogs/Blogs";
-import Portfolio from "../components/portfolio/Portfolio";
+import Book from "../components/portfolio/book";
 import BaseLayout from "../components/layout/BaseLayout";
 import {getBlogs, getDir} from "../lib/md";
 import {Blog} from '../interfaces/blog'
@@ -39,7 +39,7 @@ const Home: NextPage<props> = ({blogs,books}) => {
                 </a>
             </Link>
         </h2>
-        <Portfolio books={books}/>
+        <Book books={books}/>
     </BaseLayout>
         </>
     )

@@ -8,7 +8,7 @@ import ContentSearch from "../search/ContentSearch";
 const NavBar = () => {
     const navigation = [
         { name: 'Blogs', href: '/blogs' },
-        { name: 'Portfolio', href: '/portfolios' },
+        { name: 'Book', href: '/portfolios' },
     ]
     return (
         <>
