@@ -8,10 +8,10 @@ import {Blog} from '../interfaces/blog'
 import {SearchContent} from "../interfaces/markdown";
 import fs from "fs";
 import {getBooks} from "../lib/book";
-import {Book} from "../interfaces/book";
+import {Boook} from "../interfaces/book";
 type props = {
     blogs: Blog[],
-    books : Book[]
+    books : Boook[]
 }
 const Home: NextPage<props> = ({blogs,books}) => {
     return (
@@ -39,7 +39,7 @@ const Home: NextPage<props> = ({blogs,books}) => {
                 </a>
             </Link>
         </h2>
-        <Book books={books}/>
+        <Book book={books}/>
     </BaseLayout>
         </>
     )
