@@ -7,10 +7,13 @@ import {getBlogs, getDir} from "../lib/md";
 import {Blog} from '../interfaces/blog'
 import {SearchContent} from "../interfaces/markdown";
 import fs from "fs";
+import {getBooks} from "../lib/book";
+import {Book} from "../interfaces/book";
 type props = {
-    blogs: Blog[]
+    blogs: Blog[],
+    books : Book[]
 }
-const Home: NextPage<props> = ({blogs}) => {
+const Home: NextPage<props> = ({blogs,books}) => {
     return (
         <>
     <BaseLayout>
@@ -36,7 +39,7 @@ const Home: NextPage<props> = ({blogs}) => {
                 </a>
             </Link>
         </h2>
-        <Portfolio/>
+        <Portfolio books={books}/>
     </BaseLayout>
         </>
     )
@@ -56,8 +59,10 @@ export const getStaticProps : GetStaticProps = () => {
         searchItemList.push(searchItem)
     })
     fs.writeFileSync(searchfile,JSON.stringify(searchItemList,null,2))
+    const books = getBooks()
+    console.log(books)
     return {
-        props : {blogs}
+        props : {blogs,books}
     }
 }
 

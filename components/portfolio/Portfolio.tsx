@@ -1,8 +1,13 @@
 import Image from "next/image";
 import Link from "next/link";
 import {portfolios} from "./portfolioData";
+import {Book} from "../../interfaces/book";
+import {FunctionComponent} from "react";
 
-const Portfolio = () => {
+    type Props = {
+        book : Book
+    }
+const Portfolio : FunctionComponent<Props> = ({book}) => {
     return (
         <div className="mt-6 grid grid-cols-1 gap-y-10 gap-x-6 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-8">
             {portfolios.map((portfolio) => (
@@ -16,7 +21,7 @@ const Portfolio = () => {
                         />
                     </div>
                     <h3 className="mt-6 text-sm text-gray-500">
-                        <Link href={`/portfolios/${portfolio.slug}`}>
+                        <Link href={`/books/${portfolio.slug}`}>
                             <a>
                                 <span className="absolute inset-0" />
                                 { portfolio.title }

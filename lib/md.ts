@@ -13,16 +13,16 @@ export const getDir = (path : string) => {
 }
 const BLOG_DIR = getDir('/content/blogs')
 
-const getFilesNames = (dir : string): string[] => {
+export const getFilesNames = (dir : string): string[] => {
     return fs.readdirSync(dir)
 }
 
-const getItemInPaths = (filePath : string):Markdown => {
+export const getItemInPaths = (filePath : string):Markdown => {
     const fileContent = readFileSync(filePath,"utf-8")
     const {data,content} = matter(fileContent)
     return {...data,content} as Markdown
 }
-const getBlogFileNames = () => {
+export const getBlogFileNames = () => {
     return getFilesNames(BLOG_DIR)
 }
 const getBlog = (fileName : string): Blog => {
@@ -38,7 +38,7 @@ const getBlogBySlug = (slug : string) => {
     return getBlog(fileName)
 }
 
-const getAllItems = (fileNames : string[]) => {
+export const getAllItems = (fileNames : string[]) => {
  const items = fileNames.map((name) => getBlog(name))
     return items
 }
@@ -46,7 +46,7 @@ const getBlogs = () : Blog[] => {
     const names = getBlogFileNames()
     return getAllItems(names)
 }
-const markDownTOHtml = async (markdown : string) => {
+export const markDownTOHtml = async (markdown : string) => {
      const result = await remark().use(remarkHtml).use(remarkGfm).process(markdown)
         return result.toString()
 }
