@@ -1,15 +1,21 @@
 import fs, {readFileSync} from 'fs'
 import {join} from 'path'
 import  matter from "gray-matter";
-import {Markdown} from "../interfaces/markdown";
+import {ContentItemName, Markdown, MarkdownContent, SearchContent} from "../interfaces/markdown";
 import {Blog} from "../interfaces/blog";
 import {remark} from "remark";
 import remarkHtml from "remark-html";
 import remarkGfm from "remark-gfm";
+import blogs from "../components/blogs/Blogs";
+import {Boook} from "../interfaces/book";
 
 export const getDir = (path : string) => {
     return join(process.cwd(),path)
 
+}
+type props = {
+    blogs: Blog[],
+    books : Boook[]
 }
 const BLOG_DIR = getDir('/content/blogs')
 
@@ -39,7 +45,7 @@ const getBlogBySlug = (slug : string) => {
 }
 
 export const getAllItems = (fileNames : string[]) => {
- const items = fileNames.map((name) => getBlog(name))
+ const items = fileNames.map((name) => getBlog(name)).sort((a,b) => a.date > b.date ? -1 : 1)
     return items
 }
 const getBlogs = () : Blog[] => {
@@ -57,9 +63,30 @@ const getBlogBySlugWithMarkdown = async (slug : string):Promise<Blog> => {
     return blog
 }
 
+const saveSearchData = (content : MarkdownContent[]) => {
+    const searchfile = getDir('/content/search/index.json')
+    const searchItemList:SearchContent[] = []
+    Object.keys(content).forEach((dateSource) => {
+        const contentName = dateSource as ContentItemName
+        console.log(contentName)
+        // @ts-ignore
+        content[contentName].forEach((data) => {
+            const searchItem : SearchContent = {
+                slug : data.slug,
+                description : data.description,
+                title : data.title,
+                category : contentName
+            }
+            searchItemList.push(searchItem)
+        })
+    })
+
+    fs.writeFileSync(searchfile,JSON.stringify(searchItemList,null,2))
+}
 export {
     getBlogs,
     getBlogsSlugs,
     getBlogBySlug,
-    getBlogBySlugWithMarkdown
+    getBlogBySlugWithMarkdown,
+    saveSearchData
 }

@@ -2,6 +2,7 @@ import Link from "next/link";
 import Image from "next/image";
 import {Blog} from "../../interfaces/blog";
 import {FunctionComponent} from "react";
+import {markWithEllipsis} from "../../lib/client/utils";
 
 type props = {
     blogs: Blog[]
@@ -32,10 +33,10 @@ const Blogs : FunctionComponent<props> = ({blogs}) => {
                         <div>
                             <h3 className="text-sm text-gray-700 font-bold">
                                 <span aria-hidden="true" className="inset-0" />
-                                { blog.title }
+                                {markWithEllipsis(blog.title) }
                             </h3>
                             <p className="mt-1 text-sm text-gray-500">
-                                { blog.description }
+                                {markWithEllipsis(blog.description) }
                             </p>
                         </div>
                     </div>

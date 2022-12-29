@@ -2,6 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import {FunctionComponent} from "react";
 import {Boook} from "../../interfaces/book";
+import {markWithEllipsis} from "../../lib/client/utils";
 
     type Props = {
         book : Boook[]
@@ -23,7 +24,7 @@ const Book : FunctionComponent<Props> = ({book}) => {
                         <Link href={`/books/${book.slug}`}>
                             <a>
                                 <span className="absolute inset-0" />
-                                { book.title }
+                                {markWithEllipsis(book.title) }
                             </a>
                         </Link>
                     </h3>

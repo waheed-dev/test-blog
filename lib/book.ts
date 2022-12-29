@@ -18,7 +18,7 @@ const getBook = (fileName : string): Boook => {
     return Book
 }
 const getAllItems = (fileNames : string[]) => {
-    const items = getBookFileNames().map((name) => getBook(name))
+    const items = getBookFileNames().map((name) => getBook(name)).sort((a,b) => a.date > b.date ? -1 : 1)
     return items
 }
 const getBookBySlug = (slug : string) => {

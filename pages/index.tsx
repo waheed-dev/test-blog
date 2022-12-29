@@ -3,7 +3,7 @@ import Link from "next/link";
 import Blogs from "../components/blogs/Blogs";
 import Book from "../components/books/Book";
 import BaseLayout from "../components/layout/BaseLayout";
-import {getBlogs, getDir} from "../lib/md";
+import {getBlogs, getDir, saveSearchData} from "../lib/md";
 import {Blog} from '../interfaces/blog'
 import {SearchContent} from "../interfaces/markdown";
 import fs from "fs";
@@ -33,7 +33,7 @@ const Home: NextPage<props> = ({blogs,books}) => {
         <h2
             className="text-2xl font-bold tracking-tight text-gray-900">
             Portfolios
-            <Link href="/portfolios">
+            <Link href="/books">
                 <a className='text-sm ml-1 text-indigo-600'>
                     (See All)
                 </a>
@@ -47,22 +47,12 @@ const Home: NextPage<props> = ({blogs,books}) => {
 
 export const getStaticProps : GetStaticProps = () => {
     const blogs = getBlogs()
-    const searchfile = getDir('/content/search/index.json')
-    const searchItemList:SearchContent[] = []
-    blogs.forEach((blog) => {
-        const searchItem : SearchContent = {
-            slug : blog.slug,
-            description : blog.description,
-            title : blog.title,
-            category : 'blog'
-        }
-        searchItemList.push(searchItem)
-    })
-    fs.writeFileSync(searchfile,JSON.stringify(searchItemList,null,2))
     const books = getBooks()
-    console.log(books)
+    const content = {blogs,books}
+    // @ts-ignore
+    saveSearchData(content)
     return {
-        props : {blogs,books}
+        props : {blogs : blogs.slice(0,4),books : books.slice(0,4)}
     }
 }
 

@@ -5,11 +5,13 @@ import searchIndex from '../../content/search/index.json'
 import contentIndexer from "../../lib/client/contentIndexer";
 import {SearchContent} from "../../interfaces/markdown";
 import Link from "next/link";
+import {useRouter} from "next/router";
 
 
 
 const ContentSearch = () => {
     const [results ,setResults] = useState<SearchContent[]>([])
+    const router = useRouter()
     const [query, setQuery] = useState("");
     const ref = useRef<HTMLInputElement>(null);
     const clickListenerHandler = () => {
@@ -74,7 +76,7 @@ const contentSearch = (event : ChangeEvent<HTMLInputElement>) => {
                     className="w-80 border-solid border rounded-md z-10 bg-white max-h-80 overflow-auto absolute select is-multiple"
                     role="listbox">
                     {results.map(res =>  <li
-                        onClick={() =>{}}
+                        onClick={() =>router.push(`${res.category}/${res.slug}`)}
                         key={res.slug}
                         className={`hover:bg-indigo-600 hover:text-white p-3 relative cursor-pointer`}>
                         <div className="font-bold text-sm truncate">{res.title}</div>
